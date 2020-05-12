@@ -6,6 +6,37 @@
     <title>Add Product Form</title>
 </head>
 <body>
+    <div id="validation-summary">
+        <p>Errors go here...</p>
+    </div>
+    <form>
+        <label for="product-name">Product Name</label>
+        <input type="text" id="product-name">
+        <br>
 
+        <label for="price">Price</label>
+        <input type="text" id="price">
+        <br>
+
+        <label for="product-type">Product Type</label>
+        <input type="text" id="product-type">
+        <option value="0">Please choose option</option>
+        <option value="1">Food</option>
+        <option value="2">Electronics</option>
+        <option value="3">Clothing</option>
+        <option value="4">Toys</option>
+        <option value="5">Outdoors</option>
+        <option value="6">Other</option>
+        <br>
+
+        <label for="delivery-method">Delivery Method</label>
+        <input type="text" id="deliver-method">
+        <option value="0">Please choose option</option>
+        <option value="1">In-store pick up</option>
+        <option value="">Home delivery</option>
+        <br>
+
+        <input type="button" value="Add New Product">
+    </form>
 </body>
 </html>
