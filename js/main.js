@@ -8,6 +8,7 @@ window.onload = function () {
     addbtn.onclick = addProduct;
 };
 function addProduct() {
+    clearErrors();
     if (isAllDataValid()) {
         var product = getProduct();
         displayProduct(product);
@@ -34,6 +35,41 @@ function displayProduct(myProduct) {
     displayDiv.appendChild(productHeading);
     displayDiv.appendChild(productInfo);
 }
+function getInputById(id) {
+    return document.getElementById(id);
+}
 function isAllDataValid() {
-    return true;
+    var valid = true;
+    var productName = getInputById("product-name").value;
+    if (productName == "") {
+        valid = false;
+        addErrorMsg("Product name is required");
+    }
+    var price = getInputById("price").value;
+    var priceValue = parseFloat(price);
+    if (price == "" || isNaN(priceValue)) {
+        valid = false;
+        addErrorMsg("Price is required and must a number");
+    }
+    var productType = document.getElementById("product-type").value;
+    if (productType == "") {
+        valid = false;
+        addErrorMsg("Product type is required");
+    }
+    var availability = document.getElementById("availability").value;
+    if (availability == "") {
+        valid = false;
+        addErrorMsg("Availability is required");
+    }
+    return valid;
+}
+function addErrorMsg(errMsg) {
+    var errSummary = document.getElementById("validation-summary");
+    var errItem = document.createElement("li");
+    errItem.innerText = errMsg;
+    errSummary.appendChild(errItem);
+}
+function clearErrors() {
+    var errSummary = document.getElementById("validation-summary");
+    errSummary.innerText = "";
 }

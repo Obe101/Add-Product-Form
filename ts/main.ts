@@ -12,7 +12,7 @@ window.onload =  function () {
 }
 
 function addProduct() {
-
+    clearErrors();
     if(isAllDataValid()){
         let product = getProduct();
         displayProduct(product);
@@ -62,7 +62,50 @@ function displayProduct(myProduct:Product):void {
 
 
 }
+function getInputById(id:string):HTMLInputElement {
+    return <HTMLInputElement>document.getElementById(id);
+}
 //ADD vailidation code
 function isAllDataValid() {
-    return true;
+    let valid = true;
+
+    let productName = getInputById("product-name").value;
+    if (productName == "") {
+        valid = false;
+        addErrorMsg("Product name is required");
+    }
+
+    let price = getInputById("price").value;
+    let priceValue = parseFloat(price);
+    if (price == "" || isNaN(priceValue)) {
+        valid = false;
+        addErrorMsg("Price is required and must a number");
+    }
+
+    let productType = (<HTMLOptionElement>document.getElementById("product-type")).value;
+    if (productType == "") {
+        valid = false;
+        addErrorMsg("Product type is required");
+    }
+
+    let availability = (<HTMLOptionElement>document.getElementById("availability")).value;
+    if (availability == "") {
+        valid = false;
+        addErrorMsg("Availability is required");
+    }
+    return valid;
+}
+function addErrorMsg(errMsg:string) {
+    let errSummary = document.getElementById("validation-summary");
+    let errItem = document.createElement("li");
+    errItem.innerText = errMsg;
+    errSummary.appendChild(errItem);
+}
+
+/**
+ * Clears all errors in validation summary
+ */
+function clearErrors() {
+    let errSummary = document.getElementById("validation-summary");
+     errSummary.innerText = "";
 }
