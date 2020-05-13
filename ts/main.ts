@@ -2,7 +2,7 @@ class Product{
     productName:string;
     price:number;
     productType:string;
-    deliverMethod:string;
+    availability:string;
 
 }
 
@@ -38,14 +38,29 @@ function getProduct():Product {
     let typeInput = <HTMLSelectElement>document.getElementById("product-type");
     product.productType = typeInput.value;
 
-    let deliveryInput = <HTMLSelectElement>document.getElementById("delivery-method");
-    product.deliverMethod = deliveryInput.value;
+    let availabilityInput = <HTMLSelectElement>document.getElementById("availability");
+    product.availability = availabilityInput.value;
     
     return product
 }
 
 function displayProduct(myProduct:Product):void {
-    
+    let displayDiv =document.getElementById("display");
+   
+    let productHeading = document.createElement("h2");
+    productHeading.innerText = myProduct.productName;
+
+    let productInfo = document.createElement("p");
+    productInfo.innerText = `${myProduct.productName} is a ${myProduct.productType} prooduct that 
+    cost ${myProduct.price}. This product is available ${myProduct.availability}.`
+
+    // Add <h2> in the <div id="display">
+    displayDiv.appendChild(productHeading);
+
+    //Add <p> in the <div id="display">
+    displayDiv.appendChild(productInfo);
+
+
 }
 //ADD vailidation code
 function isAllDataValid() {
