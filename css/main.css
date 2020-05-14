@@ -1,0 +1,20 @@
+
+form{
+    margin-left: 50%;
+}
+#validation-summary{
+    color: red;
+    list-style: circle;
+}
+label{
+    font-weight: bolder;
+    font-family: sans-serif;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    display: block;
+}
+input, select{
+    border-radius: 5px;
+    width: 15em;
+    font: 1em sans-serif;
+}
