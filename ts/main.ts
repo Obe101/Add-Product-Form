@@ -9,8 +9,11 @@ class Product{
 window.onload =  function () {
     let addbtn = <HTMLElement>document.querySelector("input[type=button]");
     addbtn.onclick = addProduct;
-}
 
+    let clrbtn = <HTMLElement>document.getElementById("clear");
+    clrbtn.onclick = clearForm;
+    
+}
 function addProduct() {
     clearErrors();
     if(isAllDataValid()){
@@ -18,6 +21,23 @@ function addProduct() {
         displayProduct(product);
 
     }
+}
+function clearForm() {
+    clearProduct();
+    clearErrors();
+
+    let productNameInput = <HTMLInputElement>document.getElementById("product-name");
+    productNameInput.value = "";
+
+    let priceInput = <HTMLInputElement>document.getElementById("price");
+    priceInput.value = "";
+
+    let typeInput = <HTMLSelectElement>document.getElementById("product-type");
+    typeInput.selectedIndex = 0;
+
+    let availabilityInput = <HTMLSelectElement>document.getElementById("availability");
+    availabilityInput.selectedIndex = 0;
+    
 }
 /**
  * Gets all product data from the form 
@@ -62,6 +82,13 @@ function displayProduct(myProduct:Product):void {
 
 
 }
+function clearProduct() {
+    let displayDiv =document.getElementById("display");
+   
+    displayDiv.innerHTML = "";
+
+}
+
 function getInputById(id:string):HTMLInputElement {
     return <HTMLInputElement>document.getElementById(id);
 }

@@ -6,6 +6,8 @@ var Product = (function () {
 window.onload = function () {
     var addbtn = document.querySelector("input[type=button]");
     addbtn.onclick = addProduct;
+    var clrbtn = document.getElementById("clear");
+    clrbtn.onclick = clearForm;
 };
 function addProduct() {
     clearErrors();
@@ -13,6 +15,18 @@ function addProduct() {
         var product = getProduct();
         displayProduct(product);
     }
+}
+function clearForm() {
+    clearProduct();
+    clearErrors();
+    var productNameInput = document.getElementById("product-name");
+    productNameInput.value = "";
+    var priceInput = document.getElementById("price");
+    priceInput.value = "";
+    var typeInput = document.getElementById("product-type");
+    typeInput.selectedIndex = 0;
+    var availabilityInput = document.getElementById("availability");
+    availabilityInput.selectedIndex = 0;
 }
 function getProduct() {
     var product = new Product();
@@ -34,6 +48,10 @@ function displayProduct(myProduct) {
     productInfo.innerText = myProduct.productName + " is a " + myProduct.productType + " prooduct that \n    cost " + myProduct.price + ". This product is available " + myProduct.availability + ".";
     displayDiv.appendChild(productHeading);
     displayDiv.appendChild(productInfo);
+}
+function clearProduct() {
+    var displayDiv = document.getElementById("display");
+    displayDiv.innerHTML = "";
 }
 function getInputById(id) {
     return document.getElementById(id);

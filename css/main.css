@@ -14,7 +14,14 @@ label{
     display: block;
 }
 input, select{
+    
     border-radius: 5px;
     width: 15em;
     font: 1em sans-serif;
+}
+input[type = button]{
+    background-color: aquamarine;
+}
+input[id = clear]{
+    background-color: darkorchid;
 }
